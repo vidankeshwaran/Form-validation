@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>JavaScript Validation Form</title>
+<meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+<meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form. " />
+<link rel='stylesheet' href='style.css' type='text/css' />
+</head>
+
+<body>
+    <div class="container">
+        <form name="myform"  onsubmit="return formValidation();">   
+            <input type="text" name="FirstName" size="22" placeholder="enter the First name">
+            <input type="text" name="LastName" size="22" placeholder="enter the Last name">
+
+            <br><br> 
+            <input type="text" name="Password" size="22" placeholder="enter your password">
+            <input type="text" name="Re_Password" size="22" placeholder="Re_type your password"><br><br>
+            <input type="text" name="email" size="50" placeholder="enter your email address"><br/><br>   
+            <input type="checkbox" name="MyCheckbox" id="c_box"> <label>I agree | Terms and conditions apply</label><br><br>
+            <input type="submit" value="Submit!" onclick="send" formaction="sbm.html">
+        
+        </form> 
+ 
+
+            <script>  
+                function formValidation()  
+                    {  
+                // Logic for FirstName---------------------------------->
+                        const f_name = document.myform.FirstName.value;
+                            if( f_name == null || f_name == ""){
+                                alert("enter your first name")
+                                return false;
+                            }
+                // Logic for LastName------------------------------------>
+                        const l_name = document.myform.LastName.value;
+                            if(l_name == null || l_name == ""){
+                                alert("must enter last name")
+                                return false;
+                                
+                            }  
+                // Logic for Password------------------------------------->
+                        const pwd = document.myform.Password.value;  
+                        
+                            if(pwd.length<6){  
+                            alert("Enter your Password and must be at least 6 characters long.");  
+                                return false;  
+                            } 
+                // Logic for Re_type Password------------------------------>
+                        const re_pwd = document.myform.Re_Password.value;
+                            if(pwd !=re_pwd){
+                                alert("Re type password  and Both password must be same ");
+                            return false;
+                            }
+                // Logic for Mail----------------------------------------->
+                        const mail = document.myform.email.value;  
+                        const atposition = mail.indexOf("@");  
+                        const dotposition = mail.lastIndexOf(".");  
+                            if (atposition<1 || dotposition<atposition+2 || dotposition+2>=mail.length){  
+                                alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
+                            return false;  
+                            }  
+                // Logic for Checkbox----------------------------------->
+                        const cl=document.myform.MyCheckbox;
+                            if (cl.checked == false) 
+                                {
+                                    alert ('Click accept and terms and conditions');
+                            return false;
+                            } 
+                            else {    
+                            return true;
+                            }
+                    }
+                  
+                function send(){
+                    alert('submitted sccessfully')
+                }    
+                    
+            </script> 
+    </div> 
+    
+</body>
+</html>
